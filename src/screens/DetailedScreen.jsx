@@ -6,7 +6,7 @@ export default function DetailedScreen({ navigation }) {
   return (
     <View className="flex-1 items-center justify-center bg-white">
       <StatusBar style="auto" />
-      <Text>Details</Text>
+      <Text className="items-center justify-center">Details</Text>
       <Button
         title="Go to Home"
         onPress={() => navigation.navigate("Homescreen")}
