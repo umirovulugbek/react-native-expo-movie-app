@@ -1,11 +1,49 @@
+import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import React from "react";
 import { View, Text, Button, Image, ScrollView } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context"; //xech qayerga qimirlamaydi
+import { SafeAreaView } from "react-native-safe-area-context";
 import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
-// import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import Axios, { trendingMovie } from "../utils/httpClinet";
+import TrendingMovie from "../components/TrendingMovie";
+import { api_key } from "../constant";
+import UpcommingMovie from "../components/UpcommingMovie";
+import TopRatedMovie from "../components/TopRatedMovie";
 
 export default function Home({ navigation }) {
+  const [trending, setTrending] = useState([]);
+  const [upComming, setUpComing] = useState([]);
+  const [topRated, setTopRated] = useState([]);
+
+  useEffect(() => {
+    getTrandingMovies();
+    getUpComing();
+    getTopRated();
+  }, []);
+
+  const getUpComing = () => {
+    Axios()
+      .get(`/movie/upcoming?api_key=${api_key}`)
+      .then((res) => {
+        setUpComing(res?.data?.results);
+      });
+  };
+
+  const getTopRated = () => {
+    Axios()
+      .get(`/movie/top_rated?api_key=${api_key}`)
+      .then((res) => {
+        setTopRated(res?.data?.results);
+      });
+  };
+
+  const getTrandingMovies = () => {
+    Axios()
+      .get(trendingMovie)
+      .then((res) => {
+        // console.log(res?.data?.results, "ressss");
+        setTrending(res?.data?.results);
+      });
+  };
   return (
     <View className="flex-1 bg-slate-900">
       <SafeAreaView>
@@ -16,7 +54,14 @@ export default function Home({ navigation }) {
           <MagnifyingGlassIcon size={30} color={"white"} strokeWidth={2} />
         </View>
       </SafeAreaView>
-      <ScrollView showsHorizontalScrollIndicator={false}></ScrollView>
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 20 }}
+      >
+        {trending?.length > 0 ? <TrendingMovie trending={trending} /> : null}
+        {upComming?.length > 0 ? <UpcommingMovie /> : null}
+        {topRated?.length > 0 ? <TopRatedMovie /> : null}
+      </ScrollView>
     </View>
   );
 }
