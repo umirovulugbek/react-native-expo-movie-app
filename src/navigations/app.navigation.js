@@ -14,6 +14,7 @@ export default function Appnavigation() {
           name="Homescreen"
           // className="items-center"
           component={Home}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Detailscreen"
