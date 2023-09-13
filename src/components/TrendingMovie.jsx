@@ -7,7 +7,7 @@ export default function TrendingMovie({ trending }) {
   const { width } = Dimensions.get("window"); // telefonni  widthini olib beradi.
   return (
     <View>
-      <Text className="text-white text-xl mx-4 mb-5">
+      <Text className="text-white text-xl mx-1 mb-5 mt-5">
         <Carousel
           data={trending}
           renderItem={(item) => <MovieCard item={item} />}

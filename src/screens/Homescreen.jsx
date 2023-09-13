@@ -6,18 +6,19 @@ import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Axios, { trendingMovie } from "../utils/httpClinet";
 import TrendingMovie from "../components/TrendingMovie";
 import { api_key } from "../constant";
-import UpcommingMovie from "../components/UpcommingMovie";
+import UpcomingMovie from "../components/UpcomingMovie";
 import TopRatedMovie from "../components/TopRatedMovie";
 
 export default function Home({ navigation }) {
   const [trending, setTrending] = useState([]);
   const [upComming, setUpComing] = useState([]);
   const [topRated, setTopRated] = useState([]);
-
+  const [popular, setPopular] = useState([]);
   useEffect(() => {
     getTrandingMovies();
     getUpComing();
     getTopRated();
+    GetPopular();
   }, []);
 
   const getUpComing = () => {
@@ -36,6 +37,14 @@ export default function Home({ navigation }) {
       });
   };
 
+  const GetPopular = () => {
+    Axios()
+      .get(`/movie/popular?api_key=${api_key}`)
+      .then((res) => {
+        setPopular(res?.data?.results);
+      });
+  };
+
   const getTrandingMovies = () => {
     Axios()
       .get(trendingMovie)
@@ -48,6 +57,7 @@ export default function Home({ navigation }) {
     <View className="flex-1 bg-slate-900">
       <SafeAreaView>
         <StatusBar style="light" />
+
         <View className="flex-row justify-between items-center mx-4 my-2">
           {/* <Image source={(require = "../../assets/adaptive-icon.png")} /> */}
           <Text className="color-white text-xl">UMovie</Text>
@@ -59,8 +69,19 @@ export default function Home({ navigation }) {
         contentContainerStyle={{ paddingBottom: 20 }}
       >
         {trending?.length > 0 ? <TrendingMovie trending={trending} /> : null}
-        {upComming?.length > 0 ? <UpcommingMovie /> : null}
-        {topRated?.length > 0 ? <TopRatedMovie /> : null}
+        {upComming?.length > 0 ? (
+          <UpcomingMovie upcoming={upComming} title="Upcoming movie"  />
+        ) : null}
+        {/* {trending?.length > 0 ? (
+          <UpcomingMovie
+            upcoming={trending?.reverse()}
+            title="Trending movie"
+          />
+        ) : null} */}
+        {popular?.length > 0 ? (
+          <UpcomingMovie upcoming={popular} title={"Popular movie"} />
+        ) : null}
+        {topRated?.length > 0 ? <TrendingMovie trending={topRated} /> : null}
       </ScrollView>
     </View>
   );
