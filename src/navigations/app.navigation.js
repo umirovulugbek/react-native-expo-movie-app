@@ -17,7 +17,7 @@ export default function Appnavigation() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Detailscreen"
+          name="MovieDetail"
           // className="items-center"
           component={DetailedScreen}
           options={{ headerShown: false }}

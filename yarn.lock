@@ -4487,6 +4487,11 @@
   dependencies:
     "js-tokens" "^3.0.0 || ^4.0.0"
 
+"lottie-react-native@^6.2.0":
+  "integrity" "sha512-r0I+BPV2oC50/c5Lr41MmLJigH7TVrh4qu/ssWRj1UPpELxVwJlofbaN4mH91ruVw4LqB2mICbXVqUBVgoP64g=="
+  "resolved" "https://registry.npmjs.org/lottie-react-native/-/lottie-react-native-6.2.0.tgz"
+  "version" "6.2.0"
+
 "lru-cache@^5.1.1":
   "integrity" "sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w=="
   "resolved" "https://registry.npmjs.org/lru-cache/-/lru-cache-5.1.1.tgz"
@@ -5664,7 +5669,7 @@
     "kleur" "^3.0.3"
     "sisteransi" "^1.0.5"
 
-"prop-types@*", "prop-types@^15.6.1", "prop-types@^15.7.2":
+"prop-types@*", "prop-types@^15.6.1", "prop-types@^15.6.2", "prop-types@^15.7.2":
   "integrity" "sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   "version" "15.8.1"
@@ -5795,6 +5800,13 @@
   "integrity" "sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
   "version" "18.2.0"
+
+"react-native-animated-loader@^1.0.0":
+  "integrity" "sha512-XI4xk5SQr8BX+qUF9yL2RpoALYmMk4kt233PtOl1o7iUrR/jyXWpZ7+iwHDitV6Q+WB+obxzK6dyf/XtMPIVfQ=="
+  "resolved" "https://registry.npmjs.org/react-native-animated-loader/-/react-native-animated-loader-1.0.0.tgz"
+  "version" "1.0.0"
+  dependencies:
+    "prop-types" "^15.6.2"
 
 "react-native-heroicons@^3.2.0":
   "integrity" "sha512-M5jlhReLBALrmeKIjH1qgF3OCNphfw8xKpRlHpX8OH4zgsC3L6+Lt+c4/hNxSbxUIN2+s8XC0eK/NZLku14IzA=="
