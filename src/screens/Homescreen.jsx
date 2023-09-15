@@ -7,6 +7,7 @@ import {
   Image,
   ScrollView,
   TouchableWithoutFeedback,
+  TouchableWithoutFeedbackBase,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
@@ -16,8 +17,11 @@ import { api_key } from "../constant";
 import UpcomingMovie from "../components/UpcomingMovie";
 import TopRatedMovie from "../components/TopRatedMovie";
 import Loader from "../components/loader";
+import { useNavigation } from "@react-navigation/native";
 
-export default function Home({ navigation }) {
+export default function Home({}) {
+  const navigation = useNavigation();
+
   const [trending, setTrending] = useState([]);
   const [upComming, setUpComing] = useState([]);
   const [topRated, setTopRated] = useState([]);
@@ -70,10 +74,14 @@ export default function Home({ navigation }) {
       <SafeAreaView>
         <StatusBar style="light" />
 
-        <View className="flex-row justify-between items-center mx-4 my-2">
+        <View className="flex-row justify-between items-center mx-4 my-">
           {/* <Image source={(require = "../../assets/adaptive-icon.png")} /> */}
-          <Text className="color-white text-xl">UMovie</Text>
-          <MagnifyingGlassIcon size={30} color={"white"} strokeWidth={2} />
+          <Text className="color-white text-2xl font-semibold">UMovie</Text>
+          <TouchableWithoutFeedback
+            onPress={() => navigation.navigate("Search")}
+          >
+            <MagnifyingGlassIcon size={30} color={"white"} strokeWidth={2} />
+          </TouchableWithoutFeedback>
         </View>
       </SafeAreaView>
       {loading === true ? (
